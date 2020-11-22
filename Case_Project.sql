@@ -1,5 +1,7 @@
-CREATE TABLE Departments(dept_no varchar(20) primary key not null,
-						 dept_name varchar(30))
+CREATE TABLE Departments
+			(dept_no varchar(20) primary key,
+			 dept_name varchar(30)
+			)
 						 
 copy Departments from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\departments.csv' with CSV HEADER;
 select * from departments
@@ -30,11 +32,11 @@ Dept_no varchar (20), constraint fk_dept foreign key(dept_no) references Departm
 copy salaries from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\salaries.csv' with CSV HEADER
 select * from salaries
 
--------------
+--------------------
 create table Titles (title_id varchar(30)primary key,
 					title varchar (40));
 copy Titles from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\Titles.csv' with CSV HEADER
 
 select * from titles
 
----------------
+-------------------
