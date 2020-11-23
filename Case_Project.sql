@@ -50,12 +50,12 @@ copy Titles from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\
 
 
 
-select * from salaries
+
 
 
 /*1. List the following details of each employee: employee number, last name, first name, sex, and salary.*/
 select 
-	E.emp_no
+	e.emp_no
 	,e.last_name
 	,e.first_name
 	,e.sex, s.salary 
@@ -64,6 +64,12 @@ left JOIN salaries as s
 on e.emp_no = s.emp_no
 
 
-
+/*2. List first name, last name, and hire date for employees who were hired in 1986.*/
+select first_name
+	,last_name
+	,hire_date 
+from employees
+where hire_date >'1985-12-31'and hire_date <'1987-01-01'
+order by hire_date 
 
 
