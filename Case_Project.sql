@@ -42,5 +42,5 @@ create table Titles (title_id varchar(30)primary key,
 					);
 copy Titles from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\Titles.csv' with CSV HEADER
 
-select * from titles
+
 
