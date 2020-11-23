@@ -74,8 +74,8 @@ order by hire_date
 
 /*3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.*/
 
-/*4. List the department of each employee with the following information: employee number, last name, first name, and department name.*/
 
+/*4. List the department of each employee with the following information: employee number, last name, first name, and department name.*/
 select e.emp_no
 	,e.last_name
 	,e.first_name
@@ -87,5 +87,11 @@ left join departments as d
 on de.dept_no = d.dept_no
 
 
+/*5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."*/
 
+select first_name
+	,last_name
+	,sex 
+from employees
+where first_name = 'Hercules' and last_name like  'B%'
 
