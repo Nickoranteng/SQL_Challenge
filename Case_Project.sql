@@ -72,4 +72,20 @@ from employees
 where hire_date >'1985-12-31'and hire_date <'1987-01-01'
 order by hire_date 
 
+/*3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.*/
+
+/*4. List the department of each employee with the following information: employee number, last name, first name, and department name.*/
+
+select e.emp_no
+	,e.last_name
+	,e.first_name
+	,d.dept_name  
+from employees as e
+left join dept_emp as de
+on e.emp_no = de.emp_no
+left join departments as d
+on de.dept_no = d.dept_no
+
+
+
 
