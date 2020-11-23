@@ -95,3 +95,17 @@ select first_name
 from employees
 where first_name = 'Hercules' and last_name like  'B%'
 
+
+/*6. List all employees in the Sales department, including their employee number, last name, first name, and department name.*/
+select e.emp_no
+	,e.last_name
+	,e.first_name
+	,d.dept_name  
+from employees as e
+LEFT join dept_emp as de
+on e.emp_no = de.emp_no
+LEFT join departments as d
+on de.dept_no = d.dept_no
+where d.dept_name = 'Sales'
+
+
