@@ -134,3 +134,12 @@ from employees
 group by last_name
 order by frequency_count desc;
 
+
+
+select title, ROUND(AVG(CAST(salary AS DEC)),2)as Average_Salary
+from salaries as s 
+inner join employees as e
+on s.emp_no = e.emp_no
+inner join titles as t
+on t.title_id = e.emp_title_id
+group by title;
