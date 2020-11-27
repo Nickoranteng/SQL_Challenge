@@ -42,6 +42,7 @@ create table Titles (title_id varchar(30)primary key
 					);
 copy Titles from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\Titles.csv' with CSV HEADER
 
+select * from titles;
 
 
 
@@ -89,7 +90,7 @@ from employees as e
 left join dept_emp as de
 on e.emp_no = de.emp_no
 left join departments as d
-on de.dept_no = d.dept_no
+on de.dept_no = d.dept_no;
 
 
 /*5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."*/
@@ -143,3 +144,7 @@ on s.emp_no = e.emp_no
 inner join titles as t
 on t.title_id = e.emp_title_id
 group by title;
+
+
+
+ 
