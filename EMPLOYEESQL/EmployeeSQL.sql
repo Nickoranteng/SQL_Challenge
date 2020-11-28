@@ -26,6 +26,13 @@ create table Dept_Emp(emp_no int, constraint fk_emp foreign key (emp_no) referen
 copy Dept_Emp from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\dept_emp.csv' with CSV HEADER
 
 select * from Dept_Emp;
+--------------------------
+create table dept_manager(dept_no varchar(20), constraint fk_dept_no foreign key(dept_no)references Departments (dept_no)
+						 ,emp_no int, constraint fk_emp_no foreign key (emp_no )references Employees(emp_no)
+						 );
+
+copy dept_manager from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\dept_manager.csv' with CSV HEADER
+select * from dept_manager
 
 --------------------------importing salaries Table from Csv--------------------
 create table salaries (emp_no int,constraint fk_emp_no foreign key (emp_no)references Employees (emp_no)
@@ -53,6 +60,7 @@ select * from titles;
 select * from Departments;
 select * from Employees;
 select * from Dept_emp;
+select * from dept_manager;
 select * from Salaries;
 select * from Titles;
 
@@ -79,6 +87,20 @@ order by hire_date;
 
 /*3. List the manager of each department with the following information: department number, department name, the manager's employee number, 
 last name, first name.*/
+
+select dm.dept_no
+		,d.dept_name
+		,dm.emp_no
+		,t.title
+		,e.last_name
+		,e.first_name from employees as e
+inner join dept_manager as dm
+on e.emp_no = dm.emp_no
+inner join departments as d
+on d.dept_no = dm.dept_no
+inner join titles as t
+on t.title_id = e.emp_title_id
+
 
 
 /*4. List the department of each employee with the following information: employee number, last name, first name, and department name.*/
