@@ -74,7 +74,8 @@ select
 	,e.sex, s.salary 
 from employees as e
 left JOIN salaries as s
-on e.emp_no = s.emp_no;
+on e.emp_no = s.emp_no
+
 
 
 /*2. List first name, last name, and hire date for employees who were hired in 1986.*/
