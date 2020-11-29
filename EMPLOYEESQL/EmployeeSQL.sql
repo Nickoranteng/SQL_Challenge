@@ -8,7 +8,7 @@ select * from departments
 
 ----------------------------importing Employees Table from Csv-------------
 create table Employees (emp_no int primary key 
-						,emp_title varchar (20),constraint fk_emp_tit foreign key (emp_title) references Titles(title_id)
+						,emp_title_id varchar (20),constraint fk_emp_tit foreign key (emp_title) references Titles(title_id)
 						,birth_date date
 						,first_name varchar (30)
 						,last_name varchar(30)
@@ -26,7 +26,9 @@ create table Dept_Emp(emp_no int, constraint fk_emp foreign key (emp_no) referen
 copy Dept_Emp from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\dept_emp.csv' with CSV HEADER
 
 select * from Dept_Emp;
---------------------------
+
+ALTER TABLE Dept_Emp ADD CONSTRAINT PK_EMP_DEPT_NO PRIMARY KEY (emp_no,dept_no)
+----------------------------
 create table dept_manager(dept_no varchar(20), constraint fk_dept_no foreign key(dept_no)references Departments (dept_no)
 						 ,emp_no int, constraint fk_emp_no foreign key (emp_no )references Employees(emp_no)
 						 );
@@ -34,6 +36,7 @@ create table dept_manager(dept_no varchar(20), constraint fk_dept_no foreign key
 copy dept_manager from 'C:\Users\nicko\gwu-arl-data-pt-09-2020-u-c\02-Homework\09-SQL\Part-2-Case-Assignment\data\dept_manager.csv' with CSV HEADER
 select * from dept_manager
 
+ALTER TABLE dept_manager ADD CONSTRAINT PK_DEPT_EMP_NO PRIMARY KEY (dept_no,emp_no)
 --------------------------importing salaries Table from Csv--------------------
 create table salaries (emp_no int,constraint fk_emp_no foreign key (emp_no)references Employees (emp_no)
 					   ,salary money
@@ -83,7 +86,8 @@ select first_name
 	,last_name
 	,hire_date 
 from Employees
-where hire_date >'1985-12-31'and hire_date <'1987-01-01'
+where hire_date >'1985-12-31'
+and hire_date <'1987-01-01'
 order by hire_date; 
 
 /*3. List the manager of each department with the following information: department number, department name, the manager's employee number, 
@@ -92,7 +96,7 @@ last name, first name.*/
 select dm.dept_no
 		,d.dept_name
 		,dm.emp_no
-		,t.title
+		,title
 		,e.last_name
 		,e.first_name from employees as e
 inner join dept_manager as dm
